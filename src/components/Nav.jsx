@@ -21,7 +21,7 @@ const Nav = () => {
                         <a href="/" className='nav__link'>Home</a>
                     </li>
                     <li className='nav__list'>
-                        <a href="/" className='nav__link'>Books</a>
+                        <a href="/books" className='nav__link'>Books</a>
                     </li>
                     <button className='btn__menu' onClick={openMenu}>
                         <FontAwesomeIcon icon='bars' />
