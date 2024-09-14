@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Pages() {
+function Books() {
   return (
     <div>
-      Pages
+      Books
     </div>
   );
 }
 
-export default Pages;
+export default Books;

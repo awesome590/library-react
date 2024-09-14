@@ -1,6 +1,5 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { keyboard } from '@testing-library/user-event/dist/keyboard';
 
 const Book = ({ book }) => {
   return (
