@@ -8,7 +8,7 @@ const Book = ({ book }) => {
         <figure className='book__img--wrapper'>
           <img src={book.url} alt="" />
         </figure>
-      </>
+      </Link>
       <div className="book__title">
         <Link to="/" className='book__title--link'>{book.title}</Link>
       </div>
