@@ -12,7 +12,7 @@ function App() {
   const [cart, setCart] = useState([])
   
   function addToCart(book) {
-    setCart([...cart, book])
+    setCart(oldCart => [...oldCart, book])
   }
 
   useEffect(() => {
