@@ -49,7 +49,10 @@ const BookInfo = ({ books, addToCart, cart }) => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere tenetur excepturi natus asperiores illo incidunt, dicta rerum minima beatae ad maiores cum, quas iste nihil voluptatibus perspiciatis recusandae, ipsum soluta.
                   </p>
                 </div>
-                {bookInCart() ? <button className="btn">Checkout</button> :
+                {bookInCart() ? (
+                  <Link to={`/cart`} className='book__link'>
+                  <button className="btn">Checkout</button>
+                  </Link>) :
                   (<button className="btn" onClick={() => addBookToCart(book)}>
                     Add to Cart
                   </button>)
