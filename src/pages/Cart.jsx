@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-function Cart({ cart, changeQuantity }) {
+function Cart({ cart, changeQuantity, removeItem }) {
+    const subTotal = () => {
+      let price = 0
+      cart.forEach((item) => {
+        price += +((item.salePrice || item.originalPrice) * item.quantity)
+      })
+      return price
+    }
+    const tax = () => {
+      return (subTotal() * 0.1)
+    }
   return (
     <div id="books__body">
       <main id="books__main">
@@ -28,7 +38,7 @@ function Cart({ cart, changeQuantity }) {
                             <span className="cart__book--price">
                               ${(book.salePrice || book.originalPrice).toFixed(2)}
                             </span>
-                            <button className="cart__book--remove">Remove</button>
+                            <button className="cart__book--remove" onClick={() => removeItem(book)}>Remove</button>
                           </div>
                         </div>
                         <div className="cart__quantity">
@@ -41,7 +51,7 @@ function Cart({ cart, changeQuantity }) {
                           onChange={(event) => changeQuantity(book, event.target.value)}/>
                         </div>
                         <div className="cart__total">
-                          $10
+                          ${(book.quantity * (book.salePrice || book.originalPrice)).toFixed(2)}
                         </div>
                       </div>
                     )
@@ -52,15 +62,15 @@ function Cart({ cart, changeQuantity }) {
             <div className="total">
               <div className="total__item total__sub-total">
                 <span>Subtotal</span>
-                <span>$9</span>
+                <span>{subTotal().toFixed(2)}</span>
               </div>
               <div className="total__item total__tax">
                 <span>Tax</span>
-                <span>$1</span>
+                <span>${tax().toFixed(2)}</span>
               </div>
               <div className="total__item total__price">
                 <span>Total</span>
-                <span>$9</span>
+                <span>{(subTotal() + tax()).toFixed(2)}</span>
               </div>
               <button className="btn btn__checkout no-cursor"
                 onClick={() => alert(`I haven't implemented`)}>
