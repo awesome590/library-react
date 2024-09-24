@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Cart({ cart }) {
+function Cart({ cart, changeQuantity }) {
   return (
     <div id="books__body">
       <main id="books__main">
@@ -28,11 +28,17 @@ function Cart({ cart }) {
                             <span className="cart__book--price">
                               ${(book.salePrice || book.originalPrice).toFixed(2)}
                             </span>
-                            <button className="cart__book--remove"></button>
+                            <button className="cart__book--remove">Remove</button>
                           </div>
                         </div>
                         <div className="cart__quantity">
-                          <input type="number" min={0} max={99} className='cart__input' />
+                          <input 
+                          type="number" 
+                          min={0} 
+                          max={99} 
+                          className='cart__input' 
+                          value={book.quantity}
+                          onChange={(event) => changeQuantity(book, event.target.value)}/>
                         </div>
                         <div className="cart__total">
                           $10
